@@ -11,6 +11,8 @@ db_passwd = ''
 db_name = 'test'
 db_charset = 'utf8mb4'
 
+db_table = 'forbidden_words' # 表名
+
 
 # 不建议修改配置
 

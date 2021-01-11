@@ -15,11 +15,11 @@ def write_into_db(words_path):
     for i in trange(len(words_list)):
         try:
             word = words_list[i]
-            cursor.execute('select id from forbidden_words where words = %s limit 1', (word,))
+            cursor.execute('select id from ' + config.db_table + ' where words = %s limit 1', (word,))
             result = cursor.fetchone()
             try:
                 if result is None:
-                    cursor.execute('insert into forbidden_words(words) values (%s)', (word,))
+                    cursor.execute('insert into ' + config.db_table + '(words) values (%s)', (word,))
                     db.commit()
             except Exception:
                 print("写入失败")
